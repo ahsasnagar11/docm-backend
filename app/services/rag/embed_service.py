@@ -1,8 +1,21 @@
-from sentence_transformers import SentenceTransformer
+import cohere
+import os
 from typing import List
 
-model = SentenceTransformer("all-MiniLM-L6-v2")
+co = cohere.Client(os.getenv("COHERE_API_KEY"))
 
 def embed_texts(texts: List[str]) -> List[List[float]]:
-    embeddings = model.encode(texts, show_progress_bar=False)
-    return embeddings.tolist()
+    response = co.embed(
+        texts=texts,
+        model="embed-english-v3.0",
+        input_type="search_document"
+    )
+    return response.embeddings
+
+def embed_query(text: str) -> List[float]:
+    response = co.embed(
+        texts=[text],
+        model="embed-english-v3.0",
+        input_type="search_query"
+    )
+    return response.embeddings[0]

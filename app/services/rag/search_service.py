@@ -1,12 +1,12 @@
 from sqlalchemy.orm import Session
 from sqlalchemy import text
 from app.models.chunk import Chunk
-from app.services.rag.embed_service import embed_texts
+from app.services.rag.embed_service import embed_texts, embed_query
 from typing import List
 import uuid
 
 def vector_search(query: str, org_id: str, db: Session, top_k: int = 20) -> List[Chunk]:
-    query_embedding = embed_texts([query])[0]
+    query_embedding = embed_query(query)
     embedding_str = "[" + ",".join(str(x) for x in query_embedding) + "]"
 
     results = db.execute(text("""
