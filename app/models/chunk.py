@@ -13,7 +13,7 @@ class Chunk(Base):
     document_id = Column(UUID(as_uuid=True), ForeignKey("documents.id"), nullable=False)
     org_id = Column(UUID(as_uuid=True), ForeignKey("organizations.id"), nullable=False)
     content = Column(Text, nullable=False)
-    embedding = Column(Vector(384))
+    embedding = Column(Vector(1024))
     chunk_index = Column(Integer, nullable=False)
     page_number = Column(Integer, nullable=True)
     token_count = Column(Integer, nullable=False)
