@@ -68,12 +68,17 @@ Document ingestion runs in the background via a Celery worker — upload a PDF, 
 
 ## Running Locally
 
-**Prerequisites:** Python 3.11, Node.js, a Supabase project with pgvector enabled, Groq API key, Cohere API key, Upstash Redis instance.
-
-### Backend
+### 1. Clone the repos
 
 ```bash
-cd backend
+git clone https://github.com/ahsasnagar11/docm-backend
+git clone https://github.com/ahsasnagar11/docm-frontend
+```
+
+### 2. Backend
+
+```bash
+cd docm-backend
 python -m venv venv
 venv\Scripts\activate       # Windows
 pip install -r requirements.txt
@@ -93,18 +98,18 @@ REDIS_URL=rediss://your_upstash_url
 uvicorn main:app --reload
 ```
 
-### Celery Worker (separate terminal)
+### 3. Celery Worker (separate terminal)
 
 ```bash
-cd backend
+cd docm-backend
 venv\Scripts\activate
 celery -A app.celery.tasks worker --loglevel=info -P solo
 ```
 
-### Frontend (separate terminal)
+### 4. Frontend (separate terminal)
 
 ```bash
-cd frontend
+cd docm-frontend
 npm install
 npm run dev
 ```
