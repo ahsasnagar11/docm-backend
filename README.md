@@ -4,7 +4,7 @@
 
 DOCm is a multi-tenant SaaS platform where companies upload their documents and employees ask questions in plain English — and get accurate answers with exact source citations. No hallucinations. No guessing. Every answer is grounded in your actual content.
 
-🔗 **Live demo:** [docm-frontend.vercel.app](https://docm-frontend.vercel.app)
+ **Live demo:** [docm-frontend.vercel.app](https://docm-frontend.vercel.app)
 
 ---
 
